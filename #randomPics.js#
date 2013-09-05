@@ -2,29 +2,20 @@
 
 /*jslint browser:true, devel:true, es5:true */
 
-/*global  */
-
-function randomString(len) {
-	"use strict";
-	var text, i, imgurchar,
-	    possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-	imgurchar = possible.charAt(Math.floor(Math.random() * possible.length));
-
-	text = len > 1 ? imgurchar + randomString( len - 1) : imgurchar;
-	    return text;
-    }
+/*global */
 
 
 function hunt( imgnum ) {
     "use strict";
-    var folder = DriveApp.getFolderById( "0B1STHHfN2c9DRmE1M0MzOXJqeHc" ),
-        id, imgResp, imgData, imgsrc, imgblob;
-
+    var folder = DriveApp.getFolderById( "0B1STHHfN2c9DRmE1M0MzOXJqeHc" );
+    var  id,
+	imgResp, imgData, imgsrc, imgblob;
+eq
     do{
-	id = randomString(5);
+	id = randomString(5),
 
 	imgsrc = "http://i.imgur.com/"+id+".jpg";
-	imgResp = UrlFetchApp.fetch(imgsrc);
+  	imgResp = UrlFetchApp.fetch(imgsrc);
 	imgblob = imgResp.getBlob();
 	imgData = imgResp.getContent().slice(0, 19);
 	//Logger.log(imgData);
@@ -44,3 +35,12 @@ function hunt( imgnum ) {
     //folder.createFile(filename, imgblob.getBytes(), "image/png");
 }
 
+function randomString(len) {
+	"use strict";
+	var text, i, imgurchar,
+	    possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	imgurchar = possible.charAt(Math.floor(Math.random() * possible.length));
+
+	text = len > 1 ? imgurchar + randomString( len - 1) : imgurchar;
+	    return text;
+    }
